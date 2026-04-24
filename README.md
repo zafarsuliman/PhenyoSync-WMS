@@ -16,8 +16,5 @@ A warehouse management system designed to improve inventory tracking, reduce sto
 ## Status
 Ongoing development
 
-## Screenshots
-(Add images here)
-
 ## Purpose
 This project was developed as part of a real-world system design to solve business inefficiencies in stock management.
