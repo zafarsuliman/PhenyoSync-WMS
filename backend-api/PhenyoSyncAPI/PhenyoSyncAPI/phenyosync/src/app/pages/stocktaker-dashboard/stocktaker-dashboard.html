@@ -1,1 +1,33 @@
-<p>stocktaker-dashboard works!</p>
+<app-topbar></app-topbar>
+
+<div class="layout">
+  <app-sidebar title="Stock Taker Menu" [menuItems]="menuItems"></app-sidebar>
+
+  <main class="content">
+    <div class="welcome">Stock Taker Dashboard</div>
+
+    <section class="panel">
+      <h2>Stock Count Preview</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>System Quantity</th>
+            <th>Counted Quantity</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let item of stockItems">
+            <td>{{ item.product }}</td>
+            <td>{{ item.systemQty }}</td>
+            <td>{{ item.countedQty }}</td>
+            <td>{{ item.countedQty - item.systemQty }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>

@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [],
-  templateUrl: './sidebar.html',
-  styleUrl: './sidebar.css',
+  standalone: true,
+  imports: [CommonModule],
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class Sidebar {
-
+export class SidebarComponent {
+  @Input() title = '';
+  @Input() menuItems: any[] = [];
 }

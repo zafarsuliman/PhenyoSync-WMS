@@ -1,1 +1,21 @@
-<p>warehouse-manager-home works!</p>
+<app-topbar></app-topbar>
+
+<div class="layout">
+  <app-sidebar title="Warehouse Manager Menu" [menuItems]="menuItems"></app-sidebar>
+
+  <main class="content">
+    <div class="welcome">Warehouse Manager Home</div>
+
+    <section class="panel">
+      <h2>Main Actions</h2>
+
+      <div class="cards">
+        <div class="card" *ngFor="let action of actions">
+          <h3>{{ action.title }}</h3>
+          <p>{{ action.description }}</p>
+          <button>Open</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>

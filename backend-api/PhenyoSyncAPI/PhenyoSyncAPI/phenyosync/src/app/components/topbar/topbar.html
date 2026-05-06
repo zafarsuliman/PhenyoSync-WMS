@@ -1,1 +1,14 @@
-<p>topbar works!</p>
+<div class="topbar">
+  <div class="brand">PhenyoSync WMS</div>
+
+  <div class="nav">
+    <span *ngIf="user?.firstName">
+      {{ user.firstName }} {{ user.lastName }} | {{ user.role }}
+    </span>
+
+    <a>Home</a>
+    <a>View Profile</a>
+    <a>Update Profile</a>
+    <a (click)="logout()">Logout</a>
+  </div>
+</div>

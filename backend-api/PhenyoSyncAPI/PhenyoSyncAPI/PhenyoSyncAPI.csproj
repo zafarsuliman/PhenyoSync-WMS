@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="phenyosync\src\environments\environment.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="phenyosync\src\environments\environment.ts" />
   </ItemGroup>
 
 </Project>

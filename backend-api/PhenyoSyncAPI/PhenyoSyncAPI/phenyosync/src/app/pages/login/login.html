@@ -1,1 +1,48 @@
-<p>login works!</p>
+<div class="topbar">
+  <div>PhenyoSync WMS</div>
+  <div>Login Portal</div>
+</div>
+
+<div class="login-page">
+  <div class="login-card">
+
+    <div class="left-panel">
+      <div class="logo-box">
+        <img src="assets/logo.png" alt="Logo">
+      </div>
+
+      <h2>Welcome Back</h2>
+      <p>
+        Securely log in to access your dashboard, manage records,
+        and use the PhenyoSync Warehouse Management System.
+      </p>
+    </div>
+
+    <div class="right-panel">
+      <span class="badge">Secure System Access</span>
+
+      <h1>Login</h1>
+      <p class="subtitle">Please enter your email and password to continue.</p>
+
+      <label>Email</label>
+      <input type="email" [(ngModel)]="user.email" placeholder="Enter your email">
+
+      <label>Password</label>
+      <input type="password" [(ngModel)]="user.password" placeholder="Enter your password">
+
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <button (click)="login()" [disabled]="loading">
+        {{ loading ? 'Logging in...' : 'Login' }}
+      </button>
+
+      <div class="links">
+        <a>Forgot Password?</a>
+        <a>Help</a>
+      </div>
+
+      <p class="footer">© 2026 PhenyoSync WMS. All rights reserved.</p>
+    </div>
+
+  </div>
+</div>
