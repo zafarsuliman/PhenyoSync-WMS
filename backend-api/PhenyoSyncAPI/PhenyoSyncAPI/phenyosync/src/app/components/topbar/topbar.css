@@ -1,0 +1,32 @@
+.topbar {
+  height: 45px;
+  background: #252525;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+}
+
+.brand {
+  font-weight: bold;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+  .nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .nav span {
+    color: #dff5e8;
+    font-size: 13px;
+  }

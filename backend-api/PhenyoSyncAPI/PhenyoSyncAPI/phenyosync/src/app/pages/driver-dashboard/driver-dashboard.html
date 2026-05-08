@@ -1,0 +1,33 @@
+<app-topbar></app-topbar>
+
+<div class="layout">
+  <app-sidebar title="Driver Menu" [menuItems]="menuItems"></app-sidebar>
+
+  <main class="content">
+    <div class="welcome">Driver Dashboard</div>
+
+    <section class="panel">
+      <h2>Assigned Deliveries</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Order No.</th>
+            <th>Customer</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let delivery of deliveries">
+            <td>{{ delivery.order }}</td>
+            <td>{{ delivery.customer }}</td>
+            <td>{{ delivery.status }}</td>
+            <td><button>View</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>

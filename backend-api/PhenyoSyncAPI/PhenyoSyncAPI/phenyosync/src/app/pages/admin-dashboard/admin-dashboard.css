@@ -1,0 +1,86 @@
+.layout {
+  display: flex;
+  background: #dff5e8;
+  min-height: calc(100vh - 45px);
+}
+
+.content {
+  flex: 1;
+  padding: 25px;
+}
+
+.welcome {
+  background: linear-gradient(135deg, #168044, #43b649);
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.panel {
+  background: white;
+  padding: 22px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+  .panel h2 {
+    color: #168044;
+  }
+
+.grid,
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.card {
+  border-top: 5px solid #168044;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+  .card h3 {
+    color: #168044;
+  }
+
+  .card p {
+    color: #555;
+    font-size: 14px;
+    min-height: 60px;
+  }
+
+button {
+  width: 100%;
+  background: #168044;
+  color: white;
+  border: none;
+  padding: 11px;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+th {
+  background: #168044;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}

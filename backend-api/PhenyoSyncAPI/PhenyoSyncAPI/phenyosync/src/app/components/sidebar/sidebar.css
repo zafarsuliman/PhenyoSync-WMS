@@ -1,0 +1,28 @@
+.sidebar {
+  width: 220px;
+  background: white;
+  min-height: calc(100vh - 45px);
+  padding: 20px 0;
+}
+
+  .sidebar h3 {
+    color: #168044;
+    padding: 0 20px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+
+  .sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+    .sidebar a.active,
+    .sidebar a:hover {
+      background: #dff5e8;
+      color: #168044;
+      font-weight: bold;
+    }

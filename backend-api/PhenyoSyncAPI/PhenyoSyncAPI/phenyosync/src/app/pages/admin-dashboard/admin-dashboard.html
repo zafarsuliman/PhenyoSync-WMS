@@ -1,0 +1,62 @@
+<app-topbar></app-topbar>
+
+<div class="layout">
+  <app-sidebar title="Administrator Menu" [menuItems]="menuItems"></app-sidebar>
+
+  <main class="content">
+    <div class="welcome">Welcome to Administrator Dashboard</div>
+
+    <section class="panel">
+      <h2>Product & Inventory</h2>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Product List</h3>
+          <button>Open Product List</button>
+        </div>
+
+        <div class="card">
+          <h3>Create / Edit Product</h3>
+          <button>Create Product</button>
+          <button>Edit Product</button>
+        </div>
+
+        <div class="card">
+          <h3>Inventory Overview</h3>
+          <button>Open Inventory Overview</button>
+        </div>
+
+        <div class="card">
+          <h3>Goods Received</h3>
+          <button>Open GRN</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>System Users From Database</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Phone</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.firstName }} {{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>{{ user.phoneNumber }}</td>
+            <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+</div>
