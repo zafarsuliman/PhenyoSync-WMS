@@ -25,7 +25,7 @@ namespace PhenyoSyncAPI.Controllers
         .Include(u => u.Role)
         .FirstOrDefault(u => u.Email == dto.Email);
 
-            if (user == null || user.PasswordHash != dto.Password)
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.Password, user.PasswordHash))
                 return Unauthorized("Invalid credentials");
 
             var token = _jwt.GenerateToken(user);
