@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
+
 import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserService {
 
   private apiUrl = `${environment.apiUrl}/users`;
@@ -15,7 +18,20 @@ export class UserService {
     return this.http.get(this.apiUrl);
   }
 
+  getUsersByRole(role: string) {
+    return this.http.get(`${this.apiUrl}/role/${role}`);
+  }
+
   createUser(user: any) {
     return this.http.post(this.apiUrl, user);
   }
+
+  updateUser(id: number, user: any) {
+    return this.http.put(`${this.apiUrl}/${id}`, user);
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
+
 }

@@ -1,23 +1,43 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
-import { AdminDashboard } from './admin-dashboard';
+import { UserService } from '../../services/user';
+import { AdminDashboardComponent } from './admin-dashboard';
 
-describe('AdminDashboard', () => {
-  let component: AdminDashboard;
-  let fixture: ComponentFixture<AdminDashboard>;
+describe('AdminDashboardComponent', () => {
+  let component: AdminDashboardComponent;
+  let fixture: ComponentFixture<AdminDashboardComponent>;
+
+  const userService = {
+    getUsers: vi.fn(() => of([])),
+    createUser: vi.fn(() => of({})),
+    deleteUser: vi.fn(() => of({})),
+  };
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [AdminDashboard]
-    })
-    .compileComponents();
+    localStorage.clear();
 
-    fixture = TestBed.createComponent(AdminDashboard);
+    await TestBed.configureTestingModule({
+      imports: [AdminDashboardComponent],
+      providers: [{ provide: UserService, useValue: userService }],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(AdminDashboardComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
     await fixture.whenStable();
+  });
+
+  afterEach(() => {
+    vi.clearAllMocks();
+    localStorage.clear();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('loads users during initialization', () => {
+    expect(userService.getUsers).toHaveBeenCalled();
   });
 });

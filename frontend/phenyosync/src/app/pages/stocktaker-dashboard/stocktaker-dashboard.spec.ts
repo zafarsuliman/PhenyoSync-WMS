@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StocktakerDashboard } from './stocktaker-dashboard';
+import { StocktakerDashboardComponent } from './stocktaker-dashboard';
 
 describe('StocktakerDashboard', () => {
-  let component: StocktakerDashboard;
-  let fixture: ComponentFixture<StocktakerDashboard>;
+  let component: StocktakerDashboardComponent;
+  let fixture: ComponentFixture<StocktakerDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StocktakerDashboard]
+      imports: [StocktakerDashboardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StocktakerDashboard);
+    fixture = TestBed.createComponent(StocktakerDashboardComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

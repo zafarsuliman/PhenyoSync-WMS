@@ -11,7 +11,7 @@ namespace PhenyoSyncAPI.Entities
 
         public int SectionId { get; set; }
 
-        public DateTime SessionDate { get; set; }
+        public DateTime SessionDate { get; set; } = DateTime.Now;
 
         [Required]
         public string Status { get; set; }

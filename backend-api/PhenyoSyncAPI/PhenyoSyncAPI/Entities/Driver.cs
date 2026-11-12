@@ -11,15 +11,15 @@ namespace PhenyoSyncAPI.Entities
         public int UserId { get; set; }
 
         [Required]
-        public string LicenseNumber { get; set; }
+        public string LicenseNumber { get; set; } = string.Empty;
 
-        public DateTime LicenseExpiryDate { get; set; }
+        public DateTime? LicenseExpiryDate { get; set; }
 
         public string? VehicleAssigned { get; set; }
 
         [Required]
-        public string AvailabilityStatus { get; set; }
+        public string AvailabilityStatus { get; set; } = string.Empty;
 
-        public User User { get; set; }
+        public User User { get; set; } = null!;
     }
 }

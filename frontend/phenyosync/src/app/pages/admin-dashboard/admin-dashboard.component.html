@@ -1,62 +1,309 @@
 <app-topbar></app-topbar>
 
 <div class="layout">
-  <app-sidebar title="Administrator Menu" [menuItems]="menuItems"></app-sidebar>
 
-  <main class="content">
-    <div class="welcome">Welcome to Administrator Dashboard</div>
+  <app-sidebar [menuItems]="menuItems"></app-sidebar>
 
-    <section class="panel">
-      <h2>Product & Inventory</h2>
+  <div class="content">
 
-      <div class="grid">
-        <div class="card">
-          <h3>Product List</h3>
-          <button>Open Product List</button>
-        </div>
+    <div class="welcome">
+      PhenyoSync WMS - Administration
 
-        <div class="card">
-          <h3>Create / Edit Product</h3>
-          <button>Create Product</button>
-          <button>Edit Product</button>
-        </div>
+      <div class="top-actions">
 
-        <div class="card">
-          <h3>Inventory Overview</h3>
-          <button>Open Inventory Overview</button>
-        </div>
+        <button (click)="showSection('profile')">
+          View Profile
+        </button>
 
-        <div class="card">
-          <h3>Goods Received</h3>
-          <button>Open GRN</button>
-        </div>
+        <button class="logout-btn" (click)="logout()">
+          Logout
+        </button>
+
       </div>
-    </section>
 
-    <section class="panel">
-      <h2>System Users From Database</h2>
+    </div>
+
+    <div class="quick-nav">
+
+      <button (click)="showSection('manage')">
+        Manage Users
+      </button>
+
+      <button
+        *ngIf="canManageUsers"
+        (click)="showSection('register')">
+
+        Register User
+
+      </button>
+
+      <button (click)="showSection('profile')">
+        View Profile
+      </button>
+
+    </div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>Total Users</h3>
+        <h1>{{ users.length }}</h1>
+      </div>
+
+      <div class="card">
+        <h3>Warehouse Staff</h3>
+        <h1>18</h1>
+      </div>
+
+      <div class="card">
+        <h3>Active Deliveries</h3>
+        <h1>7</h1>
+      </div>
+
+      <div class="card">
+        <h3>Inventory Alerts</h3>
+        <h1>4</h1>
+      </div>
+
+    </div>
+
+    <!-- MANAGE USERS -->
+
+    <div
+      class="panel"
+      *ngIf="activeSection === 'manage'">
+
+      <h2>User Management</h2>
+
+      <div class="toolbar">
+
+        <input
+          type="text"
+          placeholder="Search users..."
+          [(ngModel)]="searchText"
+        />
+
+        <button
+          *ngIf="canManageUsers"
+          class="add-btn"
+          (click)="showSection('register')">
+
+          + Add User
+
+        </button>
+
+      </div>
 
       <table>
+
         <thead>
           <tr>
-            <th>Name</th>
+            <th>User ID</th>
+            <th>Full Name</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Phone</th>
             <th>Status</th>
+            <th>Actions</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.firstName }} {{ user.lastName }}</td>
+
+          <tr *ngFor="let user of filteredUsers">
+
+            <td>{{ user.userId }}</td>
+
+            <td>
+              {{ user.firstName }}
+              {{ user.lastName }}
+            </td>
+
             <td>{{ user.email }}</td>
-            <td>{{ user.role }}</td>
-            <td>{{ user.phoneNumber }}</td>
-            <td>{{ user.isActive ? 'Active' : 'Inactive' }}</td>
+
+            <td>
+              <span class="role-badge">
+                {{ user.role }}
+              </span>
+            </td>
+
+            <td>
+              <span class="status active">
+                Active
+              </span>
+            </td>
+
+            <td class="actions">
+
+              <button
+                *ngIf="canManageUsers"
+                class="edit-btn"
+                (click)="editUser(user)">
+
+                Edit
+
+              </button>
+
+              <button
+                *ngIf="canManageUsers"
+                class="delete-btn"
+                (click)="deleteUser(user)">
+
+                Delete
+
+              </button>
+
+            </td>
+
           </tr>
+
         </tbody>
+
       </table>
-    </section>
-  </main>
+
+    </div>
+
+    <!-- REGISTER USER -->
+
+    <div
+      class="panel"
+      *ngIf="activeSection === 'register' && canManageUsers">
+
+      <h2>Register User</h2>
+
+      <div class="form-grid">
+
+        <div>
+
+          <label>First Name</label>
+
+          <input
+            [(ngModel)]="newUser.firstName"
+            placeholder="Enter first name"
+          />
+
+        </div>
+
+        <div>
+
+          <label>Last Name</label>
+
+          <input
+            [(ngModel)]="newUser.lastName"
+            placeholder="Enter last name"
+          />
+
+        </div>
+
+        <div>
+
+          <label>Email</label>
+
+          <input
+            [(ngModel)]="newUser.email"
+            placeholder="Enter email"
+          />
+
+        </div>
+
+        <div>
+
+          <label>Password</label>
+
+          <input
+            type="password"
+            [(ngModel)]="newUser.password"
+            placeholder="Enter password"
+          />
+
+        </div>
+
+        <div>
+
+          <label>Role</label>
+
+          <select [(ngModel)]="newUser.roleId">
+
+            <option [value]="1">Admin Clerk</option>
+
+            <option [value]="2">Warehouse Manager</option>
+
+            <option [value]="3">Packer</option>
+
+            <option [value]="4">Driver</option>
+
+            <option [value]="5">Stock Taker</option>
+
+            <option [value]="6">CEO</option>
+
+            <option [value]="7">COO</option>
+
+            <option [value]="8">Business Manager</option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <div class="form-actions">
+
+        <button (click)="registerUser()">
+          Register User
+        </button>
+
+        <button
+          class="cancel-btn"
+          (click)="showSection('manage')">
+
+          Cancel
+
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- PROFILE -->
+
+    <div
+      class="panel"
+      *ngIf="activeSection === 'profile'">
+
+      <h2>View Profile</h2>
+
+      <div class="profile-card">
+
+        <div class="avatar">
+          {{ currentUser?.firstName?.charAt(0) }}
+        </div>
+
+        <div>
+
+          <h3>
+            {{ currentUser?.firstName }}
+            {{ currentUser?.lastName }}
+          </h3>
+
+          <p>
+            <strong>Email:</strong>
+            {{ currentUser?.email }}
+          </p>
+
+          <p>
+            <strong>Role:</strong>
+            {{ currentUser?.role }}
+          </p>
+
+          <span class="status active">
+            Active
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </div>

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PackerDashboard } from './packer-dashboard';
+import { PackerDashboardComponent } from './packer-dashboard';
 
 describe('PackerDashboard', () => {
-  let component: PackerDashboard;
-  let fixture: ComponentFixture<PackerDashboard>;
+  let component: PackerDashboardComponent;
+  let fixture: ComponentFixture<PackerDashboardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PackerDashboard]
+      imports: [PackerDashboardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PackerDashboard);
+    fixture = TestBed.createComponent(PackerDashboardComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

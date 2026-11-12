@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { WarehouseManagerHome } from './warehouse-manager-home';
+import { WarehouseManagerHomeComponent } from './warehouse-manager-home';
 
 describe('WarehouseManagerHome', () => {
-  let component: WarehouseManagerHome;
-  let fixture: ComponentFixture<WarehouseManagerHome>;
+  let component: WarehouseManagerHomeComponent;
+  let fixture: ComponentFixture<WarehouseManagerHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [WarehouseManagerHome]
+      imports: [WarehouseManagerHomeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(WarehouseManagerHome);
+    fixture = TestBed.createComponent(WarehouseManagerHomeComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

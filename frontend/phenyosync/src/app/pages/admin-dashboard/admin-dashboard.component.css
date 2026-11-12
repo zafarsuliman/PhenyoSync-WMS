@@ -84,3 +84,51 @@ td {
   padding: 12px;
   border-bottom: 1px solid #ddd;
 }
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 15px;
+}
+
+.toolbar input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.add-btn {
+  width: 170px;
+}
+
+.role-badge {
+  background: #168044;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.status.active {
+  background: #dff5e8;
+  color: #168044;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn {
+  background: #43b649;
+}
+
+.delete-btn {
+  background: #c0392b;
+}

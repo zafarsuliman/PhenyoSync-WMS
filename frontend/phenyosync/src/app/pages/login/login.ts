@@ -39,15 +39,29 @@ export class LoginComponent {
       next: (res: any) => {
         this.loading = false;
 
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('role', res.role);
         localStorage.setItem('user', JSON.stringify(res));
 
         const roleRoutes: any = {
-          AdminClerk: '/admin-dashboard',
-          WarehouseManager: '/warehouse-manager-home',
-          Packer: '/packer-dashboard',
-          Driver: '/driver-dashboard',
-          StockTaker: '/stocktaker-dashboard'
-        };
+
+  AdminClerk: '/admin-dashboard',
+
+  WarehouseManager: '/warehouse-manager-home',
+
+  Packer: '/packer-dashboard',
+
+  Driver: '/driver-dashboard',
+
+  StockTaker: '/stocktaker-dashboard',
+
+  CEO: '/admin-dashboard',
+
+  COO: '/admin-dashboard',
+
+  BusinessManager: '/admin-dashboard'
+
+};
 
         const route = roleRoutes[res.role];
 

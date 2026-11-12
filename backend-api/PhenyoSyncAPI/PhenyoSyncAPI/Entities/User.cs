@@ -29,7 +29,7 @@ namespace PhenyoSyncAPI.Entities
         [Required]
         public string Status { get; set; }
 
-        public DateTime CreatedDate { get; set; }
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
 
         // Navigation
         public Role? Role { get; set; }

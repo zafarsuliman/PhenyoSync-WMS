@@ -56,7 +56,7 @@ namespace PhenyoSyncAPI.Controllers
             var user = new User
             {
                 Email = dto.Email,
-                PasswordHash = dto.Password,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password),
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 RoleId = dto.RoleId,
@@ -73,10 +73,15 @@ namespace PhenyoSyncAPI.Controllers
         public IActionResult Update(int id, UserUpdateDto dto)
         {
             var user = _context.Users.Find(id);
-            if (user == null) return NotFound();
+
+            if (user == null)
+                return NotFound();
 
             user.FirstName = dto.FirstName;
             user.LastName = dto.LastName;
+            user.Email = dto.Email;
+            user.RoleId = dto.RoleId;
+            user.Status = dto.Status;
 
             _context.SaveChanges();
 
@@ -105,7 +110,14 @@ namespace PhenyoSyncAPI.Controllers
     }
     public class UserUpdateDto
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Email { get; set; } = string.Empty;
+
+        public string FirstName { get; set; } = string.Empty;
+
+        public string LastName { get; set; } = string.Empty;
+
+        public int RoleId { get; set; }
+
+        public string Status { get; set; } = "Active";
     }
 }

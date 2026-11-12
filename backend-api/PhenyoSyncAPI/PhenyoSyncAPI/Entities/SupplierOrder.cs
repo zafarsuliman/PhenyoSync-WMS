@@ -9,7 +9,7 @@ namespace PhenyoSyncAPI.Entities
 
         public int SupplierId { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
 
         public decimal TotalAmount { get; set; }
 
